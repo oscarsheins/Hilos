@@ -27,13 +27,13 @@ public class Mascota implements Runnable{
 		this.numeroDeVecesAlimentado = numeroDeVecesAlimentado;
 	}
 	// Cambio forma de aumentar para un separacion mas clara de la parte critica
-	public synchronized void aumentarComida() {
+	public  void aumentarComida() {
 		
 		numeroDeVecesAlimentado ++;
 		
 	}
 	
-	public synchronized void comer() {
+	public  void comer() {
 		
 		// Establesco su nombre 
 		Thread.currentThread().setName(nombreMascota);
@@ -45,12 +45,12 @@ public class Mascota implements Runnable{
 		
 		// Se comenta y descomenta par hacer pruebas
 		
-//		try {
-//			Thread.sleep(1000 + numeroDeVecesAlimentado);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			Thread.sleep(1000 * numeroDeVecesAlimentado);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		// Mensajes finales de informe
 		System.out.println("La mascota " + Thread.currentThread().getName() + " ha terminado de comer");
@@ -59,7 +59,7 @@ public class Mascota implements Runnable{
 	}
 
 	@Override
-	public void run() {
+	public void run() {	
 		
 		comer();
 		
